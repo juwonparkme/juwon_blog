@@ -10,9 +10,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
       - name: Deploy to server
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -20,12 +17,18 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
+          timeout: 30s
           script: |
-            cd /home/ubuntu/myblog
-            git pull origin main || git clone https://github.com/JuWunpark/juwon_blog.git /home/ubuntu/myblog
-            cd /home/ubuntu/myblog
+            set -e
+            echo "Starting deployment..."
+            cd /home/ubuntu/myblog || exit 1
+            echo "Pulling latest changes..."
+            git pull origin main || echo "Git pull failed, continuing..."
+            echo "Installing dependencies..."
             bundle install
+            echo "Building Jekyll site..."
             bundle exec jekyll build
+            echo "Deploying to web server..."
             sudo rsync -av --delete _site/ /var/www/myblog/
             sudo chown -R ubuntu:ubuntu /var/www/myblog
-            echo "Deployment completed successfully!"
+            echo "✅ Deployment completed successfully!"
