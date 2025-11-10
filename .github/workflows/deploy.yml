@@ -1,41 +1,38 @@
-name: Deploy to Server
+- name: Deploy to server
+  env:
+    SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+  run: |
+    ssh -i ~/.ssh/deploy_key -p "${{ secrets.SERVER_PORT }}" \
+      -o StrictHostKeyChecking=no \
+      -o UserKnownHostsFile=~/.ssh/known_hosts \
+      "${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}" << 'ENDSSH'
+      set -euo pipefail
+      echo "[deploy] start"
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+      cd /home/ubuntu/myblog   # ← 실제 리포 경로(지금 이게 맞음)
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
-      
-      - name: Deploy to server
-        env:
-          SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        run: |
-          ssh -i ~/.ssh/deploy_key \
-            -o StrictHostKeyChecking=no \
-            -o UserKnownHostsFile=~/.ssh/known_hosts \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'ENDSSH'
-            set -e
-            echo "Starting deployment..."
-            cd /home/ubuntu/myblog || exit 1
-            echo "Pulling latest changes..."
-            git pull origin main || echo "Git pull failed, continuing..."
-            echo "Installing dependencies..."
-            bundle install
-            echo "Building Jekyll site..."
-            bundle exec jekyll build
-            echo "Deploying to web server..."
-            sudo rsync -av --delete _site/ /var/www/myblog/
-            sudo chown -R ubuntu:ubuntu /var/www/myblog
-            echo "✅ Deployment completed successfully!"
-          ENDSSH
+      # rbenv 초기화 (비대화식 세션에서 PATH 잡기)
+      export RBENV_ROOT="$HOME/.rbenv"
+      export PATH="$RBENV_ROOT/bin:$PATH"
+      eval "$(rbenv init - bash)"
+      hash -r
+
+      # Ruby/Bundler 대비(없으면 설치)
+      command -v ruby >/dev/null || rbenv install -s 3.3.5
+      rbenv global 3.3.5
+      gem install bundler --no-document || true
+
+      echo "[deploy] git pull"
+      git pull --ff-only origin main
+
+      echo "[deploy] bundle install"
+      bundle install
+
+      echo "[deploy] jekyll build"
+      bundle exec jekyll build -s . -d _site
+
+      echo "[deploy] rsync to web root"
+      rsync -az --delete _site/ /var/www/myblog/
+
+      echo "[deploy] done"
+ENDSSH
