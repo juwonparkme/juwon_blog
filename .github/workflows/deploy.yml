@@ -11,6 +11,17 @@ jobs:
     steps:
       - name: Setup SSH
         run: |
+          set -e
+          PORT="${{ secrets.SERVER_PORT }}"
+          [ -z "$PORT" ] && PORT=22
+      
+          HOST="${{ secrets.SERVER_HOST }}"
+          USERNAME="${{ secrets.SERVER_USER }}"
+      
+          if [ -z "$HOST" ]; then echo "❌ SERVER_HOST is empty"; exit 1; fi
+          if [ -z "$USERNAME" ]; then echo "❌ SERVER_USER is empty"; exit 1; fi
+      
+          echo "Inputs OK (HOST masked), PORT=$PORT"
           mkdir -p ~/.ssh
           echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
