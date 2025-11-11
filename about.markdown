@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-permalink: /about
+permalink: /about/
 ---
 
 ## 안녕하세요, 주원입니다 👋
