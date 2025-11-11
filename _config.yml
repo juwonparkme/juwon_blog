@@ -3,7 +3,7 @@
 # License: MIT License
 
 # Site settings
-permalink: /:year:month:day/:title
+permalink: /:year/:month/:day/:title/
 url: "https://blog.juwonpark.me"
 baseurl: ""
 
