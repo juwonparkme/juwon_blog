@@ -5,7 +5,7 @@
 # Site settings
 permalink: /:year/:month/:day/:title/
 url: "https://blog.juwonpark.me"
-baseurl: ""
+baseurl: /project
 
 # Site variables
 name: Juwon
