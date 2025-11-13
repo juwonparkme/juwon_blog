@@ -1,5 +1,5 @@
 ---
-layout: me
+layout: menu-page
 title: About me
 permalink: /about/
 ---
