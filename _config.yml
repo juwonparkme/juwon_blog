@@ -1,8 +1,8 @@
 # Site settings
 title: Juwon Blog
 description: 'Juwon의 블로그' # this means to ignore newlines until "baseurl:"
-permalink: /:year/:month/:day/:title/
-baseurl: /project # the subpath of your site, e.g. /blog
+permalink: ':title:output_ext'
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://blog.juwonpark.me" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/img/branding/MVM-logo-full.svg"
 logo-icon: "/assets/img/branding/MVM-symbol.svg"
@@ -29,7 +29,7 @@ author-pic: Myself_Neon_grey.jpg
 about-author: Juwon의 블로그입니다.
 
 # Contact links
-email: # Add your Email address
+email: hello@juwonpark.me
 phone: # Add your Phone number
 website: https://blog.juwonpark.me # Add your website
 linkedin: # Add your Linkedin handle
