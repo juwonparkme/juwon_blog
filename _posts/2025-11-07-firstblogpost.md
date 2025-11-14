@@ -53,11 +53,12 @@ ruby -v || rbenv install -s 3.3.4
 rbenv global 3.3.4
 gem install bundler jekyll --no-document
 ```
+---
 ## GitHub Actions 워크플로
 
 - 핵심은 서버에 SSH 접속 → 리포 강제 동기화 → 빌드 → rsync 배포.
+
 ```
-# .github/workflows/deploy.yml (발췌)
 name: Deploy to Server
 on:
   push: { branches: [ main ] }
@@ -112,20 +113,24 @@ jobs:
 
             echo "[deploy] done"
 ```
+
+---
+
 ## 테마/페이지 커스터마이징
 ```
   title: "Juwon"
   description: "주원의 윈도우95 테마 블로그"
 ```
-
+---
 About 링크와 페이지
 상단 메뉴 파일: _includes/topbar.html
 ```
   <a href="{{ '/me/' | relative_url }}"><li>About</li></a>
 ```
 처음 시작은 윈도우95 theme으로 시작했으나 내가 원하는 블로그에 적절하지 않아서 변경 
+---
 
-# 초기 theme: 
+## 초기 theme: 
 [Windows 95 테마 데모](https://h01000110.github.io/20170917/windows-95)
 
 
