@@ -5,7 +5,7 @@ show_date: true
 title: "DevOps1 ProcessMonitoring"
 date: 2025-11-17 
 description: Ubuntu에서 Django 서비스 process monitoring 설정하기 (systemd + cron)
-img: posts/20251107/jekyll.jpg
+img:
 tags: [devops, django, systemd, monitoring, ubuntu]
 author: Juwon
 ---
