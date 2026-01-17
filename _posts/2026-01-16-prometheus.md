@@ -1,8 +1,17 @@
-좋아. 그럼 너가 “직접 작성”할 수 있게, 나는 **README 뼈대 + 채워 넣을 자리(너가 한 값)**를 만들어 줄게. 너는 그대로 복붙해서 저장하고, 필요한 값만 바꾸면 돼.
+---
+layout: post
+read_time: true
+show_date: true
+title: "promethus+grafana"
+date: 2026-01-16 23:59:00 +0900
+description: 로컬(macOS)에서 Prometheus 수집 → Grafana 대시보드 → Alertmanager(Gmail) 알림까지 end-to-end 모니터링 파이프라인을 구성한 과정과 장애 해결 로그.
+img: 
+tags: [devops, grafana, prometheus, Alertmanager]
+author: Juwon
+github: JuWunpark/juwon_blog
+---
 
-### Step 1) README.md 생성
 
-터미널에서 아래 그대로 실행해줘:
 
 ````bash
 cat > README.md <<'MD'
@@ -111,9 +120,4 @@ docker ps
 * macOS 호스트 디스크 지표(Root FS)가 N/A로 뜨는 이유 정리 및 대안(호스트 마운트/다른 exporter) 조사
 * Grafana Alerting과 Prometheus Alerting 비교 정리
 * Discord/Slack 알림 채널 추가
-  MD
 
-```
-
-**질문(하나만):** `README.md` 만들고 나서 `ls` 했을 때 파일이 **보여? (네/아니오)**
-```
