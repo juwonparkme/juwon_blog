@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "promethus+grafana"
+title: " Monitoring Lab (Prometheus + Grafana + Alertmanager)"
 date: 2026-01-16 23:59:00 +0900
 description: 로컬(macOS)에서 Prometheus 수집 → Grafana 대시보드 → Alertmanager(Gmail) 알림까지 end-to-end 모니터링 파이프라인을 구성한 과정과 장애 해결 로그.
 img: 
@@ -10,8 +10,6 @@ tags: [devops, grafana, prometheus, Alertmanager]
 author: Juwon
 github: JuWunpark/juwon_blog
 ---
-
-# Monitoring Lab (Prometheus + Grafana + Alertmanager)
 
 ## 목표
 - macOS에서 Docker Compose로 모니터링 스택을 구축한다.
