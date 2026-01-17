@@ -11,10 +11,6 @@ author: Juwon
 github: JuWunpark/juwon_blog
 ---
 
-
-
-````bash
-cat > README.md <<'MD'
 # Monitoring Lab (Prometheus + Grafana + Alertmanager)
 
 ## 목표
@@ -38,6 +34,7 @@ cat > README.md <<'MD'
 ## 실행 방법
 
 ### 1) 시작
+
 ```bash
 docker compose up -d
 docker ps
