@@ -2,24 +2,43 @@
 layout: home-page
 ---
 {% include calculate_relative_base.html %}
+{% assign posts = paginator.posts | default: site.posts %}
 
-<ol class="post-card-box clearfix">
-  {% for post in paginator.posts %}
-  {% include remove_double_slash.html %}
-  <li>
-    <div class="post-card">
-      <a href="{{ post_url }}" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
+<section class="hero-panel">
+  <a class="hero-panel-avatar" href="{{ relativebase }}about.html">
+    <img src="{{ relativebase }}assets/img/{{ site.author-pic }}" alt="{{ site.author }}">
+  </a>
+  <div class="hero-panel-body">
+    <div class="hero-title-row">
+      <h1>Hi, I'm {{ site.author }}.</h1>
+      <a class="hero-rss-link" href="{{ relativebase }}feed.xml" aria-label="RSS">
+        <i class="fa fa-rss" aria-hidden="true"></i>
       </a>
-      <div class="post-card-body">
-        <p class="post-card-title-and-meta">
-          
-          <a href="{{ post_url }}" class="post-card-link">
-          {{ post.title }}
-          </a>
-          {% include post_meta.html type="post-card-meta" date="none" %}
-        </p>
-      </div>
     </div>
-  </li>
-  {% endfor %}
-</ol>
+    <p class="hero-panel-copy hero-panel-copy-primary">{{ site.description }}</p>
+    <p class="hero-panel-copy">{{ site.about-author }}</p>
+    {% include social-links.html compact=true icons_only=true %}
+  </div>
+</section>
+
+<div class="section-rule section-rule-bleed"></div>
+
+<section class="post-section">
+  <div class="section-heading-row section-heading-row-compact">
+    <a href="{{ relativebase }}archive.html">View all posts</a>
+  </div>
+  <ol class="post-feed">
+    {% for post in posts %}
+      {% include remove_double_slash.html %}
+      <li class="post-feed-item">
+        <article class="post-feed-card">
+          <div class="post-feed-main">
+            <a class="post-feed-title" href="{{ post_url }}">{{ post.title }}</a>
+            <div class="post-feed-meta">{% include post_meta.html type="post-card-meta" %}</div>
+            <p class="post-feed-excerpt">{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncate: 190 }}</p>
+          </div>
+        </article>
+      </li>
+    {% endfor %}
+  </ol>
+</section>

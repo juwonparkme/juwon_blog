@@ -1,0 +1,29 @@
+---
+layout: menu-page
+title: Search
+permalink: search:output_ext
+---
+{% include calculate_relative_base.html %}
+
+<section class="search-page">
+  <header class="search-header">
+    <h1>Search</h1>
+    <p class="search-intro">Search any article ...</p>
+  </header>
+
+  <form class="search-form search-form-prominent" role="search" onsubmit="return false;">
+    <div id="search-container" class="search-input-wrap">
+      <span class="search-input-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+      <input
+        type="text"
+        id="search-input"
+        class="search"
+        placeholder="Search posts, e.g. 'Docker monitoring'"
+        autocomplete="off"
+        spellcheck="false"
+      >
+    </div>
+  </form>
+
+  <ul id="results-container" class="results-search results-search-spacious"></ul>
+</section>

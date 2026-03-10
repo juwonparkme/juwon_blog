@@ -1,0 +1,54 @@
+{% include calculate_relative_base.html %}
+{% include escape-404.html %}
+
+{% assign github_url = site.github %}
+{% if github_url %}
+{% unless github_url contains 'http' %}
+  {% capture github_url %}https://github.com/{{ site.github }}{% endcapture %}
+{% endunless %}
+{% endif %}
+
+{% assign linkedin_url = site.linkedin %}
+{% if linkedin_url %}
+{% unless linkedin_url contains 'http' %}
+  {% capture linkedin_url %}https://linkedin.com/in/{{ site.linkedin }}{% endcapture %}
+{% endunless %}
+{% endif %}
+
+{% assign twitter_url = site.twitter %}
+{% if twitter_url %}
+{% unless twitter_url contains 'http' %}
+  {% capture twitter_url %}https://twitter.com/{{ site.twitter | remove: '@' }}{% endcapture %}
+{% endunless %}
+{% endif %}
+
+<div class="social-links {% if include.compact %}social-links-compact{% endif %}">
+  {% if github_url %}
+    <a href="{{ github_url }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <i class="fa fa-github" aria-hidden="true"></i>
+      {% unless include.icons_only %}<span>GitHub</span>{% endunless %}
+    </a>
+  {% endif %}
+  {% if linkedin_url %}
+    <a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <i class="fa fa-linkedin" aria-hidden="true"></i>
+      {% unless include.icons_only %}<span>LinkedIn</span>{% endunless %}
+    </a>
+  {% endif %}
+  {% if twitter_url %}
+    <a href="{{ twitter_url }}" target="_blank" rel="noopener noreferrer" aria-label="X">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+      {% unless include.icons_only %}<span>X</span>{% endunless %}
+    </a>
+  {% endif %}
+  {% if site.email %}
+    <a href="mailto:{{ site.email }}" aria-label="Email">
+      <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      {% unless include.icons_only %}<span>이메일</span>{% endunless %}
+    </a>
+  {% endif %}
+  <a href="{{ relativebase }}feed.xml" aria-label="RSS">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+    {% unless include.icons_only %}<span>RSS</span>{% endunless %}
+  </a>
+</div>

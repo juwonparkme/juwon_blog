@@ -1,16 +1,11 @@
 ---
 layout: default
 ---
-<div class="flex-container transparent">
+<div class="site-frame">
   {% include header.html %}
-  <div class="content wrapper">
+  <main class="site-main shell">
     {{ content }}
-    {% include search.html %}
     {% include pagination.html %}
-    <div class="center-tags">
-      {% include get-site-tags.html %}
-      {% include tag_cloud.html %}
-    </div>
-  </div> <!-- End Wrapper -->
+  </main>
   {% include footer.html %}
-</div><!-- End flex-container -->
+</div>

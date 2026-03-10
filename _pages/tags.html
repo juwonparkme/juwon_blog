@@ -5,15 +5,22 @@ permalink: tags:output_ext
 ---
 {% include calculate_relative_base.html %}
 {% include get-site-tags.html %}
-<section class="blog-tags">
-  <h2>tags</h2>
-  {% include tag_cloud.html %}
+<section class="listing-page">
+  <div class="section-heading-row">
+    <div>
+      <p class="section-kicker">탐색</p>
+      <h1>태그</h1>
+    </div>
+  </div>
+  <div class="tag-row tag-row-large">
+    {% include tag_cloud.html %}
+  </div>
   <div class="tags-page-content">
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
     <div class="list-group">
       <div class="list-group-title"><a id="{{ this_word | cgi_escape }}">{{ this_word }}</a></div>
-      <div>
+      <div class="list-group-items">
       {% for post in site.tags[this_word] %}{% if post.title != null %}
       {% include remove_double_slash.html %}
         <div class="list-item">
@@ -21,7 +28,7 @@ permalink: tags:output_ext
           {% include post_meta.html type="post-card-meta" %}
         </div>
       {% endif %}{% endfor %}
-       </div>
+      </div>
     </div>
   {% endunless %}{% endfor %}
   </div>

@@ -2,30 +2,41 @@
 layout: menu-page
 title: Tag
 permalink: tag:output_ext
-infinite: yes
 ---
 {% include calculate_relative_base.html %}
 
+<section class="content-card hidden" id="tag-empty-state">
+  <p class="section-kicker">태그</p>
+  <h1>선택한 태그를 찾지 못했습니다.</h1>
+  <p>아래 태그 목록에서 다시 골라보세요.</p>
+</section>
+
 {% include get-site-tags.html %}
 {% for item in (0..site.tags.size) %}{% unless forloop.last %}
-	{% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-	<div id="{{ this_word }}" class="hidden tag-master">
-		<h1>{{ this_word }}</h1>
-		<div class="archive">
-			<div class="post-list">
-		    {% for post in site.tags[this_word] limit:3 %}
-			{% include remove_double_slash.html %}
-				<div class="post">
-					<a class="post-list-title" href="{{ post_url }}">{{ post.title }}</a>
-					{% include post_meta.html type="post-card-meta" %}
-					<div class="post-excerpt">
-						{{ post.content | markdownify | truncatewords: 100 }}<a class="read-more" href="{{ post_url }}"> read more</a>
-					</div>
-				</div>
-			{% endfor %}
-			</div>
-		</div>
-	</div>
+  {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+  <div id="{{ this_word }}" class="hidden listing-page" data-tag-section="{{ this_word }}">
+    <div class="section-heading-row">
+      <div>
+        <p class="section-kicker">태그</p>
+        <h1>{{ this_word }}</h1>
+      </div>
+    </div>
+    <ol class="post-feed">
+      {% for post in site.tags[this_word] %}
+      {% include remove_double_slash.html %}
+        <li class="post-feed-item">
+          <article class="post-feed-card">
+            <div class="post-feed-main">
+              <a class="post-feed-title" href="{{ post_url }}">{{ post.title }}</a>
+              <div class="post-feed-meta">{% include post_meta.html type="post-card-meta" %}</div>
+              <p class="post-feed-excerpt">{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncate: 190 }}</p>
+            </div>
+          </article>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
 {% endunless %}{% endfor %}
-{% include spinner.html %}
-{% include tag_cloud.html %}
+<div class="tag-row tag-row-large">
+  {% include tag_cloud.html %}
+</div>

@@ -1,12 +1,10 @@
 ---
 layout: default
 ---
-<div class="flex-container transparent">
+<div class="site-frame">
   {% include header.html %}
-  <div class="content wrapper">
+  <main class="site-main shell page-shell">
     {{ content }}
-  {% include search.html %}
-  {% include pagination.html %}
-  </div> <!-- End Wrapper -->
+  </main>
   {% include footer.html %}
 </div>
