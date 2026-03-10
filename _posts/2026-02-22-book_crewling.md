@@ -4,7 +4,7 @@ read_time: true
 show_date: true
 title: "Book Crewling Project "
 date: 2026-02-22
-description: 책 제목과 저자를 바탕으로 검색엔진 결과를 수집하고, 각 결과 페이지에서 PDF 후보와 라이선스 신호를 탐지한 뒤, **합법적으로 배포된 것으로 보이는 PDF만 저장**하려는 Selenium 기반 CLI 크롤러를 만들고 있다.
+description: 책 제목과 저자를 바탕으로 검색엔진 결과를 수집하고 각 결과 페이지에서 PDF 후보와 라이선스 신호를 탐지한 뒤 PDF로 저장하려는 Selenium 기반 CLI 크롤러를 만들고 있다.
 tags: [devops, django, systemd, monitoring, ubuntu]
 author: Juwon
 ---
