@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps 5 Reverse Proxy"
+title: "Proxy"
 date: 2025-11-22
 description: Reverse Proxy 개념 간단 정리 (Nginx + Django 기준)
 tags: [devops, django, systemd, monitoring, ubuntu]
