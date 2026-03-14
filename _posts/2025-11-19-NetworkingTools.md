@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps3 Networking Tools"
+title: "Networking Tools"
 date: 2025-11-19 
 description: Networking Tools로 서비스 상태 빠르게 체크하기 (실습 기록)
 tags: [devops, django, systemd, monitoring, ubuntu]
