@@ -2,7 +2,7 @@
 title: Juwon Park
 description: 'Notes on Django, DevOps, automation, and running things in production.' # this means to ignore newlines until "baseurl:"
 permalink: ':title:output_ext'
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://juwonpark.me" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/img/branding/MVM-logo-full.svg"
 logo-icon: "/assets/img/branding/MVM-symbol.svg"
