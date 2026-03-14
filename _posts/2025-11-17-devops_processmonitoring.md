@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps1 ProcessMonitoring"
+title: "ProcessMonitoring"
 date: 2025-11-17 
 description: Ubuntu에서 Django 서비스 process monitoring 설정하기 (systemd + cron)
 img:
