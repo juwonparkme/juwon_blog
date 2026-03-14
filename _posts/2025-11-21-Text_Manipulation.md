@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps4 Text Manipulation"
+title: "Text Manipulation"
 date: 2025-11-21
 description: Ubuntu 터미널에서 Text Manipulation으로 Nginx 로그 분석하기 
 img:
