@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps 6 Roadbalancer"
+title: "Roadbalancer"
 date: 2025-11-22
 description:  Quiz_AI 서버에 Nginx 로드 밸런서 적용
 tags: [devops, django, ubuntu]
