@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps2 Performance Monitoring"
+title: "Performance Monitoring"
 date: 2025-11-19 
 description: Django 서비스 운영하면서 처음 해본 Performance Monitoring 정리
 img:
