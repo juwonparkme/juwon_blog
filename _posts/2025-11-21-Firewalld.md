@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps3 Firewalld"
+title: "Firewalld"
 date: 2025-11-19 
 description: AWS Security Group + ufw로 이해하는 방화벽 흐름 정리
 img:
