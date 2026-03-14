@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "DevOps 8  Elastic Stack"
+title: "Elastic Stack"
 date: 2025-11-24
 description: Elastic Stack으로 Nginx 로그 모니터링 구축기 
 tags: [devops, docker, django, filebeat, kibana, Elasticsearch, aws]
